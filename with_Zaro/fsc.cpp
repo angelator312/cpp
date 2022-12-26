@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
   Vs ls;
   if (!s.is_open()) {
     cout << "failed to open "
-         << "1.angelator312" << '\n';
+         << file << '\n';
   } else {
     Vd defs = readdef();
     s.seekp(0, ios_base::beg);
