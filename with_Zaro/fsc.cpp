@@ -1,5 +1,30 @@
 #include "types.hpp"
 
+Vd readdef() {
+  fstream s("__def.a312", s.in);
+  Vd defs;
+  s.seekp(0, ios_base::beg);
+  for (size_t i = 0;; i++) {
+    string l;
+    if (!getline(s, l)) {
+      break;
+    }
+    definition d={.def = l[0], .repl = l.substr(2)};
+    defs.push_back(d);
+  }
+
+  return defs;
+}
+
+string finddef(char c, Vd defs) {
+  for (int k = 0; k < defs.size(); k++) {
+    if (defs[k].def == c) {
+      return defs[k].repl;
+    }
+  }
+  return string(1, c);
+}
+
 int main(int argc, char *argv[]) {
   if (argc < 2) {
     cout << "Usage: " << argv[0] << " <file>" << endl;
@@ -7,7 +32,7 @@ int main(int argc, char *argv[]) {
   }
   string file = argv[1];
   fstream s(file, s.in);
-  fstream outf(file + ".txt", s.out | s.trunc);
+  fstream outf(file + ".txt", outf.out | outf.trunc);
   Vs z;
   Vs ls2;
   Vs ls;
@@ -15,7 +40,7 @@ int main(int argc, char *argv[]) {
     cout << "failed to open "
          << "1.angelator312" << '\n';
   } else {
-
+    Vd defs = readdef();
     s.seekp(0, ios_base::beg);
     for (size_t i = 0;; i++) {
       string l;
@@ -42,17 +67,8 @@ int main(int argc, char *argv[]) {
       int ipr1, ipr2, ir = e.find("=", it);
       ipr1 = stoi(e.substr(0, it));
       ipr2 = stoi(e.substr(it + 1, ir));
-      if (e.back() == '!') {
-        d = "WARNING:";
-      } else if (e.back() == '?') {
-        d = "WHAAT?";
-      } else if (e.back() == '$') {
-        d = "Money,money,much money! YES!!";
-      } else if (e.back() == '.') {
-        d = "...";
-      }
       d2 += ls[ipr1].substr(0, ipr2);
-      d2 += d + "  ";
+      d2 += finddef(e.back(),defs) + "  ";
       d2 += ls[ipr1].substr(ipr2 + 2);
       ls2[ipr1] = d2;
     }
