@@ -27,5 +27,6 @@ int main()
         // cout<<chi<<endl;
         cout << (n/chi)+p<<endl;
     }
+    
     return 0;
 }

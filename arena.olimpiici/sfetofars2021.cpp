@@ -6,9 +6,9 @@ int main(){
     for (int i = 0; i < n; i++){
         int d,r,g,ci;
         cin>>d>>r>>g;
-        ci = d%(r+g);
-        if(ci>r) z=0;
-        else z=r-ci;
+        ci = (d+z)%(r+g);
+        if(ci<r) z+=r-ci;
+        // cout <<ci<<" "<<r<<" " <<g<<" "<<z<<endl; 
     }
     cout << l+z<<endl;
     
