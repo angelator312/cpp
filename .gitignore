@@ -2,3 +2,10 @@
 .DS_Store
 *.dm.cpp
 *.out
+*upr
+if
+fscompiler
+loader
+.vscode
+bnum
+pal
