@@ -1,4 +1,4 @@
-all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr
+all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr sequenceupr
 loaderupr:loader2022.cpp
 	clang++ loader2022.cpp -o loaderupr 
 bnumupr:bnum.cpp
@@ -18,4 +18,6 @@ balupr:ball.cpp
 ballanceupr:ballance.cpp
 	clang++ ballance.cpp  -o ballanceupr 
 
+sequenceupr:sequence.cpp
+	clang++ sequence.cpp  -o sequenceupr 
 
