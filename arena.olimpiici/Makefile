@@ -27,3 +27,5 @@ sheepupr:sheep.cpp
 	clang++ sheep.cpp  -o sheepupr
 partyupr:party.cpp
 	clang++ party.cpp  -o partyupr
+pairsupr:pairs.cpp
+	clang++ pairs.cpp  -o pairsupr
