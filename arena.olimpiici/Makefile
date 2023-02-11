@@ -1,4 +1,4 @@
-all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr sequenceupr oddupr credupr
+all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr sequenceupr oddupr credupr sheepupr
 loaderupr:loader2022.cpp
 	clang++ loader2022.cpp -o loaderupr 
 bnumupr:bnum.cpp
@@ -19,8 +19,10 @@ ballanceupr:ballance.cpp
 	clang++ ballance.cpp  -o ballanceupr 
 sequenceupr:sequence.cpp
 	clang++ sequence.cpp  -o sequenceupr 
-oddupr:odd.cpp
-	clang++ odd.cpp  -o oddupr
-
+oddupr:odd-baven.cpp
+	clang++ odd-baven.cpp  -o oddupr
 credupr:cred.cpp
 	clang++ cred.cpp  -o credupr
+sheepupr:sheep.cpp
+	clang++ sheep.cpp  -o sheepupr
+
