@@ -1,4 +1,4 @@
-all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr sequenceupr oddupr credupr sheepupr
+all:loaderupr bnumupr palupr teamsupr svetofarsupr cutupr beautifulupr balupr ballanceupr sequenceupr oddupr credupr sheepupr partyupr
 loaderupr:loader2022.cpp
 	clang++ loader2022.cpp -o loaderupr 
 bnumupr:bnum.cpp
@@ -25,4 +25,5 @@ credupr:cred.cpp
 	clang++ cred.cpp  -o credupr
 sheepupr:sheep.cpp
 	clang++ sheep.cpp  -o sheepupr
-
+partyupr:party.cpp
+	clang++ party.cpp  -o partyupr
