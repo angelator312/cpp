@@ -10,9 +10,5 @@ loader
 bnum
 pal
 *.zip
-teams
-beautuful
-ball
-ballance
-odd
-cred
+zips
+!*/zips/*/solution.cpp
