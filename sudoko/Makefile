@@ -1,3 +1,3 @@
 all:sudoko-Algorithm-Chavdar sudoko-brutAlgorithm
-%:%.cpp
-	clang++ $?  -g -o $@
+%:%.cpp Board.hpp Index.hpp
+	clang++ $<  -g -o $@

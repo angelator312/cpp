@@ -1,5 +1,5 @@
-#include"Index.hpp"
-#include<fstream>
+#include "Index.hpp"
+#include <fstream>
 struct IB {
   Index ind;
   bool b;
@@ -9,8 +9,11 @@ struct IB {
   }
 };
 struct Board {
-  int board[9][9]{};
+  fstream out; int board[9][9]{};
   int assumptions[9][9][10]{};
+  bool countM=false;
+  int count=0;
+  Board(string fN):out(fN,out.out){}
   // int assumptions_old[9][9][10]{};
   bool eInSquare(Index ind, int e) {
     Index i = ind.startOfSquare();
@@ -64,7 +67,8 @@ struct Board {
       }
     }
   };
-  void write() { /* condition */
+  void write(){write(cout);};
+  void write(ostream &cout) { /* condition */
     for (int i = 0; i < 9; i++) {
       for (int j = 0; j < 9; j++) {
         char e = '0' + board[i][j];
@@ -183,6 +187,14 @@ struct Board {
   bool fillAssumption() {
     Index ind = findMinAssumptions();
     if (!ind.isValid()) {
+      if (countM) {
+        if (isValidSudoku()) {
+          count++;
+          out<<"Solution number: "<<count<<endl;
+          write(out);
+        }
+        return false;
+      }
       return isValidSudoku();
     }
 
@@ -210,20 +222,4 @@ struct Board {
     buildAssumptions();
     return fillAssumption();
   }
-  // bool ChavdarAlgorithm(int number, bool minus) {
-  //   buildAssumptions();
-  //   if (minus) {
-  //     number--;
-  //   } else {
-  //     number++;
-  //   }
-  //   if (number == 10) {
-  //     number = 8;
-  //     minus = true;
-  //   } else if (number == 0) {
-  //     number = 2;
-  //     minus = false;
-  //   }
-  //   return ChavdarAlgorithm(number, minus);
-  // };
 };
