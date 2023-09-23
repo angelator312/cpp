@@ -70,15 +70,15 @@ struct Board {
         if (e == '0') {
           e = '.';
         }
-        cout << e << " ";
+         // cout << e << " ";
         if (j % 3 == 2 && j>0) {
-          cout << "| ";
+           // cout << "| ";
         }
       }
       if (i % 3 == 2 && i>0) {
-        cout << endl << "------|-------|-------|";
+         // cout << endl << "------|-------|-------|";
       }
-      cout << endl;
+       // cout << endl;
     }
   };
   bool brutAlgorithm(Index ind) {
@@ -88,24 +88,24 @@ struct Board {
     }
 
     if (!ind.isValid()) {
-      cout << "Ind is not valid" << endl;
+       // cout << "Ind is not valid" << endl;
       return true;
     }
 
     Index ind2 = ind;
     ind2.next();
     while (true) {
-      // cout << e << endl;
+      //  // cout << e << endl;
       if (e == 10) {
         board[ind.y][ind.x] = 0;
         return false;
       }
       board[ind.y][ind.x] = e;
       bool place = eInPlace(ind, e);
-      cout << "[" << ind.toString() << "] |" << place << "| e:" << e << endl;
+       // cout << "[" << ind.toString() << "] |" << place << "| e:" << e << endl;
       if (place) {
-        cout << e << " :e ind.x: " << ind.x << " ind.y: " << ind.y << endl;
-        // cout << "Check and check index 2" << endl;
+         // cout << e << " :e ind.x: " << ind.x << " ind.y: " << ind.y << endl;
+        //  // cout << "Check and check index 2" << endl;
         if (brutAlgorithm(ind2)) {
           return true;
         } else {
@@ -124,6 +124,6 @@ int main() {
   sudoku.read();
   Index ind(0, 0);
   sudoku.write();
-  cout << sudoku.brutAlgorithm(ind) << endl;
+   // cout << sudoku.brutAlgorithm(ind) << endl;
   sudoku.write();
 }

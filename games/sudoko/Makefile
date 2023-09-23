@@ -1,3 +1,3 @@
-all:sudoko-main sudoko-brutAlgorithm
+all:sudoku-main sudoko-brutAlgorithm
 %:%.cpp Board.hpp Index.hpp
 	clang++ $<  -g -o $@
