@@ -1,9 +1,9 @@
 all:1upr 2upr fsupr fscompiler
 2upr:2.cpp
-	clang++ 2.cpp -o 2upr 
+	g++ 2.cpp -o 2upr 
 1upr:1.cpp
-	clang++ 1.cpp -o 1upr 
+	g++ 1.cpp -o 1upr 
 fsupr:fs.cpp
-	clang++ fs.cpp -o fsupr 
-fscompiler:fsc.cpp
-	clang++ fsc.cpp -o fscompiler 
+	g++ fs.cpp -o fsupr 
+# fscompiler:fsc.cpp
+# 	g++ fsc.cpp -o fscompiler 
