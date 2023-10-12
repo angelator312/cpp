@@ -12,3 +12,5 @@ pal
 *.zip
 zips
 !*/zips/*/solution.cpp
+**/**/**/.test-data/
+*.exe
