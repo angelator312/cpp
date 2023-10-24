@@ -1,6 +1,5 @@
 // TEST_ZIP: https://arena.olimpiici.com/api/public/problems/1855/zip?download=true
 #include <iostream>
-#define endl "\n"
 #if 0
 #define P(a) cout << "[" << __LINE__ << "] : " << a << endl
 #else
