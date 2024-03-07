@@ -14,5 +14,10 @@ zips
 !*/zips/*/solution.cpp
 **/**/**/.test-data/
 *.exe
-!**/**/*.cpp
-**/*
+*.o
+!*.cpp
+# !**/**/*.cpp
+# !**/*.cpp
+# !*.cpp
+# **/*
+bash
