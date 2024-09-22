@@ -15,7 +15,6 @@ struct Data
     void out()
     {
         
-        int d=0;
         cout<<d<<" "<<m<<" "<<y<<endl;
     }
 };
