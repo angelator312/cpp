@@ -10,6 +10,7 @@ TEST_TARGETS=$(patsubst %.cpp, test.%, ${FILES_WITH_TEST})
 all: $(BIN_FILES)
 
 # Compile rules
+# g++ -DEVAL -std=c++17 -O2 -pipe -static -s
 %.exe: %.cpp
 	@echo Compiling $<
 	g++ $(CXX_FLAGS) $< -g -o $@
