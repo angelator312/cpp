@@ -49,7 +49,8 @@ int main() {
             } else if (predNiva.top() < a[i]) {
               ++br;
               // cerr << "predNiva+= " << i << endl;
-              predNiva.pop();
+
+              predNiva=stack<int>();
               predNiva.push(a[i]);
             } else
               predNiva.push(a[i]);
