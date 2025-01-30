@@ -14,6 +14,8 @@ all: $(BIN_FILES)
 	@echo Compiling $<
 	g++ $(CXX_FLAGS) $< -g -o $@
 
+.delete-exe: $(NOTHNG)
+	rm -f $(wildcard *.exe)
 
 # Run tests rules
 .test-data:
