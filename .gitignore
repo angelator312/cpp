@@ -15,6 +15,7 @@ zips
 **/**/**/.test-data/
 *.exe
 *.o
+**/*.exe
 !*.cpp
 # !**/**/*.cpp
 # !**/*.cpp

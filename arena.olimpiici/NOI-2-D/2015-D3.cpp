@@ -1,33 +1,44 @@
-#include <bits/stdc++.h>
 #include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 using LL = long long;
-int main()
-{
-    LL n,br=0;
-    char k;
-    
-    cin >>k >>n;
+LL n, br = 0;
+int k = 0;
 
-    if(n>=k-'0')
-        br++;
-    // cout<<br<<endl;
-    
-    for (int i = 1; i <=(n/10)-1; i++)
-    {
-        string s=to_string(i);
-        for (char x:s)
-            if(x==k)br+=10;
-        br++;
-        
-    }
-    // cout<<br<<endl;
-    if(n%10>=k-'0')
-        br++;
-    // cout<<br<<endl;
-    string s=to_string(n/10);
-    for (char x:s)
-        if(x==k)br+=n%10+1;
-    cout<<br<<endl;
-    return 0;
+int fillBr(const LL &doI, const LL &stepen10) {
+  cerr << doI << " " << stepen10 << endl;
+  if (doI < 10) {
+    return doI >= k;
+  } else if (doI - stepen10 == 0) {
+    return fillBr(doI - 1, stepen10 / 10) + 1 == k;
+  } else if (doI % stepen10 == 0) {
+    return fillBr(doI - 1, stepen10) + doI / stepen10 == k;
+  } else if (doI / stepen10 == k) {
+    LL ch = doI % stepen10;
+    return fillBr(k * stepen10, stepen10) + fillBr(ch, stepen10 / 10) + ch;
+  } else {
+    LL ch = doI % stepen10;
+    return fillBr(doI - ch, stepen10) + fillBr(ch, stepen10 / 10);
+  }
+}
+
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+
+  cin >> k >> n;
+  LL stepen10 = 1 ;
+  LL n2 = n;
+  while (n2 > 1) {
+    stepen10 *= 10;
+    n2 /= 10;
+    cerr<<n2<<" "<<stepen10<<"\n";
+  }
+  stepen10/=10;
+
+  br = fillBr(n, stepen10);
+
+  cout << br << endl;
+  return 0;
 }
