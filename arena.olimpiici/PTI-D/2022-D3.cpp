@@ -29,7 +29,7 @@ int main() {
             break;
         }
     }
-    if(redica2[i]==-1)
+    if(redica2[i]==-1){}
   }
   for(int i=1;i<=n-2;++i)
   {

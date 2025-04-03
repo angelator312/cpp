@@ -4,7 +4,8 @@
 #include <cmath>
 #define endl "\n"
 using namespace std;
-const int MAX_CIFRI=43210;//43205
+const int MAX_CIFRI = 43210; // 43205
+const int N = 1; // Lupi Pravilo
 vector<int> cifri;
 int redica[N];
 int redica2[N];
