@@ -5,7 +5,7 @@
 using namespace std;
 using pI = pair<int, int>;
 using sPI = stack<pI>;
-vector<pI> vec;
+vector<pI> points;
 int main() {
   stack<int> st;
   int n, u, v;
@@ -23,23 +23,23 @@ int main() {
     } else {
       int br2 = 0;
       for (int j = 1; j < br; j++) {
-        br2 += vec.back().second - 1;
-        vec.pop_back();
+        br2 += points.back().second - 1;
+        points.pop_back();
       }
       br += br2;
     }
-    vec.push_back(make_pair(e, br));
+    points.push_back(make_pair(e, br));
     st.push(e);
   }
   int sum = 0;
   // for (auto e : vec) {
   //   cerr << e.first << " " << e.second << endl;
   // }
-  int vSize = vec.size();
+  int vSize = points.size();
   for (int i = 0; i <= vSize - 2; i++) {
-    int e = vec[i].first;
-    int e2 = vec[i + 1].first;
-    int a2 = vec[i + 1].second;
+    int e = points[i].first;
+    int e2 = points[i + 1].first;
+    int a2 = points[i + 1].second;
     int s = min(e, e2) * u * v * a2;
     // cerr << e << " " << e2 << " " << s << endl;
     sum += s;

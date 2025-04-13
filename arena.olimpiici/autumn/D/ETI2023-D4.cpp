@@ -9,7 +9,7 @@ LL a[N];
 LL prefix[N];
 LL prefixNormal[N];
 LL sum=0;
-LL sum2=0;
+LL umnozh=0;
 
 void plusSum(LL e)
 {
@@ -18,8 +18,8 @@ void plusSum(LL e)
 }
 void plusSum2(LL e)
 {
-    sum2+=e;
-    sum2=sum2%MOD2;
+    umnozh+=e;
+    umnozh=umnozh%MOD2;
 }
 void plusSumMain(int e,int e2)
 {
@@ -52,7 +52,7 @@ int main()
         cin>>e>>e2;
         plusSumMain(e,e2);
     }
-    cout<<sum<<" "<<sum2<<endl;
+    cout<<sum<<" "<<umnozh<<endl;
 
     return 0;
 }

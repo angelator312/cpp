@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 using pI = pair<int, short>;
-vector<pI> vec;
+vector<pI> points;
 int L,Len=1e9,LenL;
 int n,k,num;
 int main()
@@ -15,11 +15,11 @@ int main()
         for(int j=0;j<n;++j)
         {
             cin>>num;
-            vec.push_back({num,i});
+            points.push_back({num,i});
         }
     }
     //cerr<<"cin"<<endl;
-    sort(vec.begin(),vec.end());
+    sort(points.begin(),points.end());
     /*
     for (auto e:vec)
     {
@@ -30,26 +30,26 @@ int main()
 
     int j=0,br=0;
     int mnozhestva[k+1]{};
-    int vSize=vec.size();
+    int vSize=points.size();
     for(int i=0;i<vSize;)
     {
         //cerr<<"i:"<<i<<endl;
         while(j<vSize && br<k)
         {
-            br += mnozhestva[vec[j].second]==0;  
-            ++mnozhestva[vec[j].second];
+            br += mnozhestva[points[j].second]==0;  
+            ++mnozhestva[points[j].second];
             //cerr<<j<<":"<<br<<endl;
             ++j;
         }
         if(br<k)break;
-        LenL = vec[j-1].first-vec[i].first;
+        LenL = points[j-1].first-points[i].first;
         if(Len>LenL)
         {
             Len=LenL;
-            L=vec[i].first;
+            L=points[i].first;
         }
-        --mnozhestva[vec[i].second];
-        br -= mnozhestva[vec[i].second]==0;
+        --mnozhestva[points[i].second];
+        br -= mnozhestva[points[i].second]==0;
         ++i;
     }
     cout<<L<<" "<<L+Len<<endl;
