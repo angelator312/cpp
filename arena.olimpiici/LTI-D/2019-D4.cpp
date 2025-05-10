@@ -40,7 +40,7 @@ inline void print() {
   cout << endl;
 }
 
-inline int dfs(const int edge) {
+inline int dfs(const int& edge) {
   // cerr << "onEdge:" << edge << endl;
   int doSega = 0;
   for (int e : edges[edge]) {

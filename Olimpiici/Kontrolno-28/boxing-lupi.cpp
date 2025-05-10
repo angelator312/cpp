@@ -8,7 +8,7 @@ LL n,k;
 LL sum;
 LL2 umnozh;
 LL minR[N];
-inline void Read() {
+inline void Init() {
   cin >> n >> k;
   for (int i = 0; i < n; ++i) {
     cin >> boxers[i];
@@ -16,7 +16,7 @@ inline void Read() {
 }
 
 int main() {
-  Read();
+  Init();
   LL j = 0, br = 0;
   for (int i = 0; i < n; ++i) {
     while (j < n && umnozh < k) {

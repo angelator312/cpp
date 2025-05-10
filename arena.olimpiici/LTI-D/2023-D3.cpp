@@ -1,36 +1,27 @@
-#include <algorithm>
 #include <iostream>
-#include <vector>
 using namespace std;
 using LL = long long;
-using pL = pair<int, LL>;
 int n;
-LL br = 0;
-vector<pL> st;
-
 int main() {
   cin >> n;
-  int e;
-  int mazhurant = -1, br = 1;
-  cin >> mazhurant;
-  for (int i = 1; i < n; ++i) {
+  LL mazh, br = 1, i, e;
+  cin >> mazh;
+  for (i = 1; i < n; ++i) {
     cin >> e;
-    if (e == mazhurant)
+    if (e == mazh)
       ++br;
     else
       --br;
-    if (br <= 0) {
-      mazhurant = e;
-      br = 1;
-    }
+    if (br == 0)
+      mazh = e;
   }
-  br=0;
-  for (int i = 0; i < n; ++i) {
+  br = 0;
+  for (i = 0; i < n; ++i) {
     cin >> e;
-    if(e==mazhurant)++br;
+    if (e == mazh)
+      ++br;
   }
-  if(br>n/2)
-    cout << 2 * (n - br) << endl;
-  else cout << min(2 * (n - br),n-1) << endl;
+  // cerr << mazh << endl;
+  cout << min((n - br) * 2, n - 1LL) << endl;
   return 0;
 }

@@ -8,7 +8,7 @@ LL sum;
 int boxers[N];
 int minR[N];
 long long k;
-inline void Read() {
+inline void Init() {
   cin >> n >> k;
   for (int i = 1; i <= n; i++) {
     cin >> boxers[i];
@@ -37,7 +37,7 @@ inline LL action(int from, int to, int who) {
   return boxers[who] * (boxers_prefix[to] - boxers_prefix[from - 1]);
 }
 int main() {
-  Read();
+  Init();
   int r = 1;
   for (int l = 1; l < n; ++l) {
     // cerr << (long long)sum << "<-l " << l << endl;
