@@ -13,7 +13,7 @@ int plusJ[] = {1, -1, 0, 0};
 char matrix[N][M];
 vector<pI> edges[N][M];
 queue<pI> q;
-vector<pI> pacients;
+// bool visited[N][M];
 int dist[N][M];
 inline void read() {
   cin >> n >> m;
@@ -26,13 +26,11 @@ inline void init() {
   read();
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < m; ++j) {
-      if (matrix[i][j] == '+')
-        pacients.push_back({i, j});
-      else if (matrix[i][j] == 'S') {
+      if (matrix[i][j] == 'S') {
         startI = i;
         startJ = j;
       }
-      else if (matrix[i][j] == 'T') {
+      if (matrix[i][j] == 'T') {
         endI = i;
         endJ = j;
       }
@@ -53,7 +51,7 @@ inline void init() {
   }
 }
 void bfs(const int i, const int j) {
-  //   visited[i][j] = true;
+  // visited[i][j] = true;
   dist[i][j] = 0;
   q.push({i, j});
   while (!q.empty()) {
@@ -61,9 +59,11 @@ void bfs(const int i, const int j) {
     q.pop();
     // process node s
     for (pI e : edges[s.first][s.second]) {
-      if (dist[e.first][e.second])
+      if (visited[e.first][e.second])
         continue;
+      // visited[e.first][e.second] = true;
       dist[e.first][e.second] = dist[s.first][s.second] + 1;
+      if(e.first)
       // cerr << e.first << " " << e.second<<" "<<dist[e.first][e.second] <<
       // endl;
       q.push(e);
@@ -73,6 +73,6 @@ void bfs(const int i, const int j) {
 int main() {
   init();
   bfs(startI, startJ);
-  cout << dist[endI][endJ] << " " << k << endl;
+  cout << dist[endI][endJ]-1 << " " << k << endl;
   return 0;
 }
