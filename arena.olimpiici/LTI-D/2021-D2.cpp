@@ -59,7 +59,7 @@ void bfs(const int i, const int j) {
     q.pop();
     // process node s
     for (pI e : edges[s.first][s.second]) {
-      if (visited[e.first][e.second])
+      if (dist[e.first][e.second])
         continue;
       // visited[e.first][e.second] = true;
       dist[e.first][e.second] = dist[s.first][s.second] + 1;
