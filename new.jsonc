@@ -1,0 +1,14 @@
+[
+  {
+    "time": 1, //When you play it(not seconds), you can play more than one animation at the same time
+    //but the objects have to be different
+    "delay": 1, //seconds
+    "duration": 3, //seconds
+    "animate": [
+      {
+        "interpolate": true, //or false
+        "fontSize": "12px", //px are defaul
+      },
+    ],
+  },
+]
