@@ -3,32 +3,33 @@ using namespace std;
 
 using LL = long long;
 
-const LL N = 1e3 + 1;
-const LL BIGGEST_OUT = 1e7 + 1;
+const LL N = 1e5 + 1;
+const LL BIGGEST_OUT = 1e14 + 1;
 
 LL studentsCount, bookCount;
 LL bookPages[N];
 
 void Read() {
   cin >> studentsCount >> bookCount;
-  for (int i = 0; i < bookCount; ++i) {
+  for (LL i = 0; i < bookCount; ++i) {
     cin >> bookPages[i];
   }
 }
 
-bool CanGet(int mostAllowedPages) {
-  LL pageCount = 0, studentsHavingBooks = 0;
-  for (int i = 0; i < bookCount; ++i) {
+bool CanGet(LL mostAllowedPages) {
+  LL pageCount = 0, studentsHavingBooks = 1;
+  for (LL i = 0; i < bookCount; ++i) {
     pageCount += bookPages[i];
     if (pageCount > mostAllowedPages) {
       ++studentsHavingBooks;
       if (studentsHavingBooks > studentsCount)
         return false;
       pageCount = bookPages[i];
+      if (pageCount > mostAllowedPages)
+        return false;
     }
   }
-  ++studentsHavingBooks;
-  return !(studentsHavingBooks > studentsCount);
+  return true;
 }
 
 int main() {
