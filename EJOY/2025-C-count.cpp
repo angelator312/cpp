@@ -48,7 +48,7 @@ inline bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
 }
 
 inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber,
-                const num &sumToMake) noexcept {
+                const int &sumToMake) noexcept {
   out_t out = 0;
   eprintf("%s-%d-%d\n", doSegaNumber.c_str(), szOfDoSegaNumber,
           isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber));
@@ -69,7 +69,7 @@ inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber,
   short i = 0;
   if (szOfDoSegaNumber == 1)
     i = 1;
-  for (; i <= min(9LL, sumToMake); ++i) {
+  for (; i <= min(9, sumToMake); ++i) {
     doSegaNumber.push_back(char(i + '0'));
     out = (out + DP(doSegaNumber, szOfDoSegaNumber, sumToMake - i)) % MOD;
     doSegaNumber.pop_back();
@@ -77,14 +77,12 @@ inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber,
   return out;
 }
 string startDPString = "";
+int sumOnRequest;
 inline out_t SolveRequest() noexcept {
-  num sum;
-  cin >> maxNumber >> sum;
+  cin >> maxNumber >> sumOnRequest;
   maxNumberSize = maxNumber.size();
-  // eprintf("%d\n", isBiggerThanTheMaxNumber("123457", 6));
-  // return 0;
 
-  return DP(startDPString, 0, sum);
+  return DP(startDPString, 0, sumOnRequest);
 }
 
 int main() {
