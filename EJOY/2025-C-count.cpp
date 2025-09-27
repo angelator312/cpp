@@ -46,20 +46,8 @@ inline bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
                                      const idx_t &szOfDoSegaNumber) {
   return isBigger(doSegaNumber, szOfDoSegaNumber, maxNumber, maxNumberSize);
 }
-// Calculate things like 10,100,200,2000...
-// out_t calculateWithLast0(string doSegaNumber, idx_t szOfDoSegaNumber) {
-//   out_t out = 0;
-//   for (int i = 0; i < szOfDoSegaNumber - szOfDoSegaNumber; ++i) {
-//     doSegaNumber.push_back('0');
-//     if (isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber))
-//       ++out;
-//     else
-//       break;
-//   }
-//   return out;
-// }
 
-inline out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
+inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
   out_t out = 0;
   eprintf("%s-%d-%d\n", doSegaNumber.c_str(), szOfDoSegaNumber,
           isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber));
@@ -68,7 +56,9 @@ inline out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
     // calculateWithLast0(doSegaNumber, szOfDoSegaNumber)
     if (isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber)) {
       doSegaNumber.push_back('0');
-      return 1 + DP(doSegaNumber, szOfDoSegaNumber + 1, sumToMake);
+      out = 1 + DP(doSegaNumber, szOfDoSegaNumber + 1, sumToMake);
+      doSegaNumber.pop_back();
+      return out;
     }
     return 0;
   }
@@ -85,14 +75,15 @@ inline out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
   }
   return out;
 }
-
+string startDPString = "";
 inline out_t SolveRequest() {
   num sum;
   cin >> maxNumber >> sum;
   maxNumberSize = maxNumber.size();
   // eprintf("%d\n", isBiggerThanTheMaxNumber("123457", 6));
   // return 0;
-  return DP("", 0, sum);
+
+  return DP(startDPString, 0, sum);
 }
 
 int main() {
