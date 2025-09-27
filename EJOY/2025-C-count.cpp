@@ -19,16 +19,16 @@ string maxNumber;
 idx_t maxNumberSize;
 // a>=b
 inline bool isBiggerOrEqual(const string &a, const idx_t &szOfA,
-                            const string &b, const idx_t &szOfB) {
+                            const string &b, const idx_t &szOfB) noexcept {
   if (szOfA < szOfB)
     return false;
   if (szOfA > szOfB)
     return true;
   return a >= b;
 }
-
+// a>b
 inline bool isBigger(const string &a, const idx_t &szOfA, const string &b,
-                     const idx_t &szOfB) {
+                     const idx_t &szOfB) noexcept {
   if (szOfA < szOfB)
     return false;
   if (szOfA > szOfB)
@@ -43,11 +43,12 @@ inline bool isMaxNumberBiggerOrEqualToNumber(const string &doSegaNumber,
 }
 
 inline bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
-                                     const idx_t &szOfDoSegaNumber) {
+                                     const idx_t &szOfDoSegaNumber) noexcept {
   return isBigger(doSegaNumber, szOfDoSegaNumber, maxNumber, maxNumberSize);
 }
 
-inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
+inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber,
+                const num &sumToMake) noexcept {
   out_t out = 0;
   eprintf("%s-%d-%d\n", doSegaNumber.c_str(), szOfDoSegaNumber,
           isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber));
@@ -76,7 +77,7 @@ inline out_t DP(string &doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
   return out;
 }
 string startDPString = "";
-inline out_t SolveRequest() {
+inline out_t SolveRequest() noexcept {
   num sum;
   cin >> maxNumber >> sum;
   maxNumberSize = maxNumber.size();
