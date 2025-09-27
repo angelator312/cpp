@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cstdio>
+#include <ios>
 #include <iostream>
 #if 0
 #define eprintf(args...) fprintf(stderr, args)
@@ -17,8 +18,8 @@ const int MOD = 1e9 + 7;
 string maxNumber;
 idx_t maxNumberSize;
 // a>=b
-bool isBiggerOrEqual(const string &a, const idx_t &szOfA, const string &b,
-                     const idx_t &szOfB) {
+inline bool isBiggerOrEqual(const string &a, const idx_t &szOfA,
+                            const string &b, const idx_t &szOfB) {
   if (szOfA < szOfB)
     return false;
   if (szOfA > szOfB)
@@ -26,8 +27,8 @@ bool isBiggerOrEqual(const string &a, const idx_t &szOfA, const string &b,
   return a >= b;
 }
 
-bool isBigger(const string &a, const idx_t &szOfA, const string &b,
-              const idx_t &szOfB) {
+inline bool isBigger(const string &a, const idx_t &szOfA, const string &b,
+                     const idx_t &szOfB) {
   if (szOfA < szOfB)
     return false;
   if (szOfA > szOfB)
@@ -35,14 +36,14 @@ bool isBigger(const string &a, const idx_t &szOfA, const string &b,
   return a > b;
 }
 
-bool isMaxNumberBiggerOrEqualToNumber(const string &doSegaNumber,
-                                      const idx_t &szOfDoSegaNumber) {
+inline bool isMaxNumberBiggerOrEqualToNumber(const string &doSegaNumber,
+                                             const idx_t &szOfDoSegaNumber) {
   return isBiggerOrEqual(maxNumber, maxNumberSize, doSegaNumber,
                          szOfDoSegaNumber);
 }
 
-bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
-                              const idx_t &szOfDoSegaNumber) {
+inline bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
+                                     const idx_t &szOfDoSegaNumber) {
   return isBigger(doSegaNumber, szOfDoSegaNumber, maxNumber, maxNumberSize);
 }
 // Calculate things like 10,100,200,2000...
@@ -58,7 +59,7 @@ bool isBiggerThanTheMaxNumber(const string &doSegaNumber,
 //   return out;
 // }
 
-out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
+inline out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
   out_t out = 0;
   eprintf("%s-%d-%d\n", doSegaNumber.c_str(), szOfDoSegaNumber,
           isMaxNumberBiggerOrEqualToNumber(doSegaNumber, szOfDoSegaNumber));
@@ -85,7 +86,7 @@ out_t DP(string doSegaNumber, idx_t szOfDoSegaNumber, num sumToMake) {
   return out;
 }
 
-out_t SolveRequest() {
+inline out_t SolveRequest() {
   num sum;
   cin >> maxNumber >> sum;
   maxNumberSize = maxNumber.size();
@@ -94,4 +95,13 @@ out_t SolveRequest() {
   return DP("", 0, sum);
 }
 
-int main() { printf("%d\n", SolveRequest()); }
+int main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+
+  idx_t tests;
+  cin >> tests;
+  while (tests--)
+    printf("%d\n", SolveRequest());
+}
