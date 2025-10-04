@@ -1,0 +1,20 @@
+IN A
+IN B
+
+; NOD Func
+CMP A B
+; IF A>B
+JZ 13
+; Swap A B
+MOV C A
+MOV A B
+MOV B C
+; Sub and start the func
+CMP E B
+; Go to the end
+JZ 20
+SUB A B
+JNZ 5
+
+; Out
+OUT A
