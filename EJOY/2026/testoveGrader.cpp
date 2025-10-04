@@ -17,6 +17,15 @@ int main() {
         return 0;
     }
 
+    cout << "{";
+    for(auto tree : gr::v) {
+        cout << "{";
+        for(auto edge : tree) {
+            cout << "{" << edge.first << "," << edge.second << "},";
+        }
+        cout << "},";
+    }
+
     set<vector<pair<int,int>>> s;
     for(int i = 0; i < t; i++) {
         sort(gr::v[i].begin(), gr::v[i].end());

@@ -12,26 +12,28 @@ using namespace std;
 
 using num = int;
 using idx_t = int;
-using tree_t = vector<std::pair<int, int>>;
+using tree_el = pair<int, int>;
+using tree_t = vector<tree_el>;
 
 vector<num> heights;
 vector<num> originalHeights;
+
+bool Compare(const tree_el &a, const tree_el &b) { return a < b; }
 
 vector<tree_t> generate(int verticesCount, int treesCount) {
   vector<tree_t> trees;
   vector<num> perm;
   for (int i = 1; i <= verticesCount; ++i)
     perm.push_back(i);
+  tree_t tree;
+  for (int i = 1; i < verticesCount; ++i)
+    tree.push_back({i, i + 1});
+  num height = verticesCount - 1;
   while (treesCount--) {
-    tree_t tree;
-    for (int i = 0; i < perm.size() - 1; ++i)
-      tree.push_back({perm[i], perm[i + 1]});
-    originalHeights.push_back(perm.size() - 1);
+    originalHeights.push_back(height);
     trees.push_back(tree);
-    if (!next_permutation(perm.begin(), perm.end())) {
-      perm.clear();
-      for (int i = 1; i <= perm.size() - 1; ++i)
-        perm.push_back(i);
+    if (!next_permutation(tree.begin(), tree.end(), Compare)) {
+      tree.pop_back();
     }
   }
   heights = originalHeights;
