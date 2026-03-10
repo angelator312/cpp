@@ -1,0 +1,10 @@
+9
+set 1 proba
+set 2 test proba
+set 2 t test
+output 1 test
+set 1 a
+set 3 b t a
+cmd 1 proba
+blabla 2 a b
+komanda 1 b
