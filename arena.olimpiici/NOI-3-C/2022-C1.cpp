@@ -25,13 +25,15 @@ pii mid(pii A, pii B)
 }
 pii SolveFor(pii P, pii A, pii B, double target)
 {
-  pii B1 = B;
-  while(dist(A,B)>ERR)
+  pii B1=B;
+  // auto [A, B] = lrFromPoints(A, B);
+  // cerr << dist({A.x, A.y}, {r.x, r.y}) << endl;
+  while (dist(A, B) > ERR)
   {
-    pii M = mid(A, B);
-    double areaBMP = area(B1, M, P);
-    // cout << std::fixed << std::setprecision(6) << P.x << " " << P.y << " " << A.x << " " << A.y << " " << B.x << " " << B.y << " " << target << " :: " << areaBMP << endl;
-    if (areaBMP > target)
+    pii M=mid(A,B);
+    auto chArea = area(B1,M,P);
+    // cerr << m.x << " " << m.y << " " << chArea << endl;
+    if ((chArea - target)> ERR)
       A = M;
     else
       B = M;
